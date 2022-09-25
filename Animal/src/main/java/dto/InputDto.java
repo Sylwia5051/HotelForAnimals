@@ -57,7 +57,6 @@ public class InputDto {
                 ", name of animal='" + animalName + '\'' +
                 ", name of owner='" + ownerName + '\'' +
                 ", date of birth='" + dateOfBirth + '\'' +
-                ", animal weight=" + animalWeight +
-                '}';
+                ", animal weight=" + animalWeight + '\n';
     }
 }

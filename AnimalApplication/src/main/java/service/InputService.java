@@ -4,6 +4,7 @@ import dto.InputDto;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import java.util.Scanner;
 import java.util.regex.Pattern;
 
@@ -15,15 +16,23 @@ public class InputService {
     }
 
     InputDto inputDto = new InputDto();
-    String whatAnimal = inputDto.getWhatAnimal();
     List<InputDto> listOfAnimal = new ArrayList<>();
 
     public void writeWhatKindOfAnimal() {
-        //String whatAnimal = inputDto.getWhatAnimal();
+        String whatAnimal = inputDto.getWhatAnimal();
         if (whatAnimal == null) {
             System.out.println("Write what kind of animal you have.");
-            inputDto.setWhatAnimal(scanner.nextLine());
-            System.out.println("You have a " + inputDto.getWhatAnimal());
+            whatAnimal = getUserInput();
+            if(Objects.equals(whatAnimal, "dog")
+                    || Objects.equals(whatAnimal, "guinea pig")
+                    || Objects.equals(whatAnimal, "cat")
+                    || Objects.equals(whatAnimal, "rabbit")) {
+                inputDto.setWhatAnimal(whatAnimal);
+                System.out.println("You have a " + inputDto.getWhatAnimal());
+            } else {
+                System.out.println("We accept only dog, cat, guinea pig and rabbit");
+                whatAnimal = null;
+            }
         } else {
             System.out.println("You have a " + inputDto.getWhatAnimal());
         }
@@ -96,7 +105,7 @@ public class InputService {
                 && inputDto.getDateOfBirth() != null
                 && inputDto.getAnimalWeight() != null) {
             listOfAnimal.add(inputDto);
-            inputDto = null;
+            inputDto = new InputDto();
             System.out.println("This animal is added to the list");
         } else {
             System.out.println("I can't add animal to the list, you must complete information");
