@@ -1,3 +1,7 @@
 # Project exclude paths
 /Animal/target/
 /AnimalApplication/target/
+/Animal/Animal.iml
+/AnimalApplication/AnimalApplication.iml
+/.idea/
+/HotelForAnimals.iml
